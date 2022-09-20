@@ -1,3 +1,9 @@
+import PokemonLanding from 'Modules/PokemonLanding';
+
 export default function Index({ stars }) {
-	return <main>Pokemon APP</main>
+	return (
+		<main>
+			<PokemonLanding></PokemonLanding>
+		</main>
+	);
 }
