@@ -1,9 +1,8 @@
-import React from 'react';
-import { Grid } from '@mui/material';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { Typography, Button } from '@mui/material';
+import { Typography, Button, Grid } from '@mui/material';
 
-const HeroBanner = () => {
+const HeroBanner: FC = () => {
 	return (
 		<StyledHeroBanner>
 			<Grid container>
@@ -89,7 +88,7 @@ const StyledHeroBanner = styled.div`
 		height: 352px;
 		transform: scale(-1, 1);
 		bottom: 0px;
-		right: 30px;
+		right: 187px;
 	}
 `;
 
