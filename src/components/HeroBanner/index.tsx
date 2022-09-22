@@ -42,6 +42,7 @@ const StyledHeroBanner = styled.div`
 		font-size: 52px;
 		line-height: 78px;
 		color: #42494d;
+		width: 65%;
 	}
 	.sub-title {
 		font-style: normal;
@@ -62,6 +63,9 @@ const StyledHeroBanner = styled.div`
 		font-size: 20px;
 		line-height: 30px;
 		box-shadow: none;
+		:hover {
+			background-color: #bf8d04;
+		}
 	}
 	.image-grid {
 		width: 534px;

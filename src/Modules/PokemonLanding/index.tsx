@@ -1,15 +1,51 @@
-import React from 'react';
-import { Navbar, HeroBanner, ListPokemon } from 'components';
+import React, { FC, useState } from 'react';
+import { Navbar, HeroBanner, ListPokemon, ModalComponent } from 'components';
 import styled from '@emotion/styled';
 
-const PokemonLanding = () => {
+// type AllPokemonProps = {
+//   pokemonData?: string[];
+
+// }
+
+interface IPokemonLandingProps {
+	allPokemon: string[];
+	allPokemonDetail: string[];
+	typePokemon: string[];
+}
+
+const PokemonLanding: FC<IPokemonLandingProps> = ({
+	allPokemon,
+	allPokemonDetail,
+	typePokemon,
+}) => {
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [pokemonInfo, setPokemonInfo] = useState<{}>({});
+
+	const handleModalOpen = (data: {}) => {
+		console.log('dataaaaaa', data);
+		setPokemonInfo(data);
+		setIsModalOpen(true);
+	};
+
+	const handleModalClose = () => {
+		console.log('close modal');
+		setIsModalOpen(false);
+	};
 	return (
 		<StyledPokemonLanding>
 			<WrapperHeroBanner>
 				<Navbar />
 				<HeroBanner />
 			</WrapperHeroBanner>
-			<ListPokemon />
+			<ListPokemon
+				allPokemonDetail={allPokemonDetail}
+				onSelectPokemon={handleModalOpen}
+			/>
+			<ModalComponent
+				isModalOpen={isModalOpen}
+				pokemonInfo={pokemonInfo}
+				handleModalClose={handleModalClose}
+			/>
 		</StyledPokemonLanding>
 	);
 };

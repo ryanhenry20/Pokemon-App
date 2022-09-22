@@ -1,19 +1,34 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import styled from '@emotion/styled';
 import { Grid, Typography } from '@mui/material';
-import { CardListPokemon, PaginationComponent } from 'components';
+import {
+	CardListPokemon,
+	PaginationComponent,
+	ModalComponent,
+} from 'components';
+import { PokemonContext } from 'context/pokemonContext';
 
 interface IListPokemon {
-	pokemonData?: string[];
+	allPokemonDetail?: string[];
+	onSelectPokemon: (data: {}) => void;
 }
 
-const ListPokemon: FC<IListPokemon> = ({ pokemonData }) => {
+const ListPokemon: FC<IListPokemon> = ({
+	allPokemonDetail,
+	onSelectPokemon,
+}) => {
+	const { pokemon, loading } = useContext(PokemonContext);
+
+	console.log('pokemon Context', pokemon);
+
 	const renderCardPokemon = () => {
-		const arr = [1, 2, 3, 4, 5, 6];
-		return arr.map((item, index) => {
+		return allPokemonDetail?.map((item, index) => {
 			return (
 				<Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-					<CardListPokemon />
+					<CardListPokemon
+						pokemonData={item}
+						onSelectPokemon={onSelectPokemon}
+					/>
 				</Grid>
 			);
 		});
@@ -39,9 +54,6 @@ const ListPokemon: FC<IListPokemon> = ({ pokemonData }) => {
 				rowSpacing={6}
 				columnSpacing={2}
 				className="grid-container">
-				{/* <Grid item xs={12} md={6} sm={6}>
-					<CardListPokemon />
-				</Grid> */}
 				{renderCardPokemon()}
 			</Grid>
 			<WrapperPagination>

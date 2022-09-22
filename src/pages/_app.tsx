@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import styled from '@emotion/styled';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { PokemonProvider } from 'context/pokemonContext';
 import '@fontsource/poppins';
 
 declare module '@mui/material/styles' {
@@ -46,9 +47,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline>
-					<Wrapper>
-						<Component {...pageProps} />
-					</Wrapper>
+					<PokemonProvider>
+						<Wrapper>
+							<Component {...pageProps} />
+						</Wrapper>
+					</PokemonProvider>
 				</CssBaseline>
 			</ThemeProvider>
 		</>

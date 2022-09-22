@@ -3,6 +3,7 @@ import HeroBanner from './HeroBanner';
 import ListPokemon from './ListPokemon';
 import CardListPokemon from './CardListPokemon';
 import PaginationComponent from './Pagination';
+import ModalComponent from './Modal';
 
 export {
 	Navbar,
@@ -10,4 +11,5 @@ export {
 	ListPokemon,
 	CardListPokemon,
 	PaginationComponent,
+	ModalComponent,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Pagination } from '@mui/material';
+import { Pagination, PaginationItem } from '@mui/material';
 import Stack from '@mui/material/Stack';
 
 const PaginationComponent = () => {
@@ -11,6 +11,11 @@ const PaginationComponent = () => {
 					count={20}
 					variant="outlined"
 					shape="rounded"
+					onChange={(event, page) => {
+						console.log('event', event);
+						console.log('page', page);
+						console.log('page', 2, 'data', page * 9);
+					}}
 					hidePrevButton
 					hideNextButton
 					showFirstButton
