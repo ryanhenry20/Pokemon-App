@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { Typography, Button, Grid } from '@mui/material';
 
-const HeroBanner: FC = () => {
+const HeroBanner: FC = ({ onClick }) => {
 	return (
 		<StyledHeroBanner>
 			<Grid container>
@@ -13,7 +13,7 @@ const HeroBanner: FC = () => {
 					<Typography className="sub-title" variant="subtitle1">
 						Thousands of data compiled into one place
 					</Typography>
-					<Button className="btn-banner" variant="contained">
+					<Button onClick={onClick} className="btn-banner" variant="contained">
 						Check PokèDex
 					</Button>
 				</Grid>

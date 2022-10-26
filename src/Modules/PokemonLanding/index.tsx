@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useRef } from 'react';
 import { Navbar, HeroBanner, ListPokemon, ModalComponent } from 'components';
 import styled from '@emotion/styled';
 
@@ -21,6 +21,12 @@ const PokemonLanding: FC<IPokemonLandingProps> = ({
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [pokemonInfo, setPokemonInfo] = useState<{}>({});
 
+	const ref = useRef(null);
+
+	const handleClick = () => {
+		ref.current?.scrollIntoView({ behavior: 'smooth' });
+	};
+
 	const handleModalOpen = (data: {}) => {
 		console.log('dataaaaaa', data);
 		setPokemonInfo(data);
@@ -35,12 +41,15 @@ const PokemonLanding: FC<IPokemonLandingProps> = ({
 		<StyledPokemonLanding>
 			<WrapperHeroBanner>
 				<Navbar />
-				<HeroBanner />
+				<HeroBanner onClick={handleClick} />
 			</WrapperHeroBanner>
-			<ListPokemon
-				allPokemonDetail={allPokemonDetail}
-				onSelectPokemon={handleModalOpen}
-			/>
+
+			<div ref={ref}>
+				<ListPokemon
+					allPokemonDetail={allPokemonDetail}
+					onSelectPokemon={handleModalOpen}
+				/>
+			</div>
 			<ModalComponent
 				isModalOpen={isModalOpen}
 				pokemonInfo={pokemonInfo}

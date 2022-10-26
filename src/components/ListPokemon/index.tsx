@@ -17,12 +17,14 @@ const ListPokemon: FC<IListPokemon> = ({
 	allPokemonDetail,
 	onSelectPokemon,
 }) => {
-	const { pokemon, loading } = useContext(PokemonContext);
+	const { pokemon, loading, pokemonDetail, getPokemonPaggination } =
+		useContext(PokemonContext);
 
-	console.log('pokemon Context', pokemon);
+	// console.log('pokemon Context', pokemon);
+	console.log('pokemon pokemonDetail', pokemonDetail);
 
 	const renderCardPokemon = () => {
-		return allPokemonDetail?.map((item, index) => {
+		return pokemonDetail?.map((item, index) => {
 			return (
 				<Grid item xs={12} sm={6} md={4} lg={4} key={index}>
 					<CardListPokemon

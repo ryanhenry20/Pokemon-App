@@ -40,7 +40,7 @@ const CardListPokemon: FC<ICardListPokemonProps> = ({
 	const colorType = (type: string) => {
 		switch (type) {
 			case 'fire':
-				return '#FBAF00';
+				return '#e01714';
 			case 'grass':
 				return '#00C851';
 			case 'water':

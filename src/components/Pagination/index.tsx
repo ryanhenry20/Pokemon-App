@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { Pagination, PaginationItem } from '@mui/material';
 import Stack from '@mui/material/Stack';
+import { PokemonContext } from 'context/pokemonContext';
 
-const PaginationComponent = () => {
+interface IPaginationProps {
+	handlePageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
+}
+
+const PaginationComponent: React.FC<IPaginationProps> = ({
+	handlePageChange,
+}) => {
+	const { getPokemonPaggination } = useContext(PokemonContext);
+
 	return (
 		<Stack spacing={2}>
 			<StyledPagination>
@@ -12,9 +21,8 @@ const PaginationComponent = () => {
 					variant="outlined"
 					shape="rounded"
 					onChange={(event, page) => {
-						console.log('event', event);
-						console.log('page', page);
-						console.log('page', 2, 'data', page * 9);
+						console.log('page', page, 'data', page * 9);
+						getPokemonPaggination(page);
 					}}
 					hidePrevButton
 					hideNextButton
