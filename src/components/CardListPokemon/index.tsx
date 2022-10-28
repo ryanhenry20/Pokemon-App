@@ -1,28 +1,30 @@
 import React, { FC, useState } from 'react';
 import styled from '@emotion/styled';
 import { Grid, Typography, Card } from '@mui/material';
+import { TypePokemonInfo } from 'types/pokemon';
 
 interface ICardListPokemonProps {
-	pokemonData: {
-		id: number;
-		name: string;
-		types: [
-			{
-				type: {
-					slot?: string;
-					name: string;
-				};
-			}
-		];
-		sprites: {
-			other: {
-				dream_world: {
-					front_default: string;
-				};
-			};
-		};
-	};
-	onSelectPokemon: (data: {}) => void;
+	pokemonData: TypePokemonInfo;
+	// pokemonData: {
+	// 	id: number;
+	// 	name: string;
+	// 	types: [
+	// 		{
+	// 			type: {
+	// 				slot?: string;
+	// 				name: string;
+	// 			};
+	// 		}
+	// 	];
+	// 	sprites: {
+	// 		other: {
+	// 			dream_world: {
+	// 				front_default: string;
+	// 			};
+	// 		};
+	// 	};
+	// };
+	onSelectPokemon: (data: TypePokemonInfo) => void;
 }
 
 type pokemonTypeStyleProps = {

@@ -12,3 +12,25 @@ export type TypePokemonDetail = {
 		speed: number;
 	};
 };
+
+export type TypePokemonInfo = {
+	id: number;
+	name: string;
+	weight: string;
+	height: string;
+	sprites: {
+		other: {
+			dream_world: {
+				front_default: string;
+			};
+		};
+	};
+	abilities: [];
+	types: [
+		{
+			type: {
+				name: string;
+			};
+		}
+	];
+};
