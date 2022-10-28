@@ -2,17 +2,25 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import styled from '@emotion/styled';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { PokemonProvider } from 'context/pokemonContext';
+import '@fontsource/poppins';
 
-const theme = createMuiTheme({
+declare module '@mui/material/styles' {
+	interface white {
+		main?: string;
+	}
+}
+
+const theme = createTheme({
 	palette: {
 		background: {
 			default: '#EEE',
 		},
-		primary: {
-			main: '#673ab7',
+		secondary: {
+			main: '#F5F5F5',
 		},
 	},
 });
@@ -34,16 +42,28 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 	return (
 		<>
 			<Head>
-				<title>Todo App</title>
+				<title>Pokemon</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline>
-					<Component {...pageProps} />
+					<PokemonProvider>
+						<Wrapper>
+							<Component {...pageProps} />
+						</Wrapper>
+					</PokemonProvider>
 				</CssBaseline>
 			</ThemeProvider>
 		</>
 	);
 };
+
+const Wrapper = styled.body`
+	font-family: 'Poppins', sans-serif;
+	overflow-x: hidden;
+	.MuiTypography-root {
+		font-family: 'Poppins', sans-serif;
+	}
+`;
 
 export default MyApp;
