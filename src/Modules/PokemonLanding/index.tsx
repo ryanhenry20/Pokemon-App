@@ -21,7 +21,7 @@ const PokemonLanding: FC<IPokemonLandingProps> = ({
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [pokemonInfo, setPokemonInfo] = useState<{}>({});
 
-	const ref = useRef(null);
+	const ref = useRef<null | HTMLDivElement>(null);
 
 	const handleClick = () => {
 		ref.current?.scrollIntoView({ behavior: 'smooth' });
