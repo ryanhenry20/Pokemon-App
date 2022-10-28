@@ -1,6 +1,7 @@
 import React, { FC, useState, useRef } from 'react';
 import { Navbar, HeroBanner, ListPokemon, ModalComponent } from 'components';
 import styled from '@emotion/styled';
+import { TypePokemonInfo } from 'types/pokemon';
 
 // type AllPokemonProps = {
 //   pokemonData?: string[];
@@ -19,7 +20,7 @@ const PokemonLanding: FC<IPokemonLandingProps> = ({
 	typePokemon,
 }) => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-	const [pokemonInfo, setPokemonInfo] = useState<{}>({});
+	const [pokemonInfo, setPokemonInfo] = useState<null | TypePokemonInfo>(null);
 
 	const ref = useRef<null | HTMLDivElement>(null);
 
@@ -27,7 +28,7 @@ const PokemonLanding: FC<IPokemonLandingProps> = ({
 		ref.current?.scrollIntoView({ behavior: 'smooth' });
 	};
 
-	const handleModalOpen = (data: {}) => {
+	const handleModalOpen = (data: TypePokemonInfo) => {
 		console.log('dataaaaaa', data);
 		setPokemonInfo(data);
 		setIsModalOpen(true);

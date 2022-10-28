@@ -7,11 +7,11 @@ import {
 	ModalComponent,
 } from 'components';
 import { PokemonContext } from 'context/pokemonContext';
-import { TypePokemonDetail } from 'types/pokemon';
+import { TypePokemonDetail, TypePokemonInfo } from 'types/pokemon';
 
 interface IListPokemon {
 	allPokemonDetail?: string[];
-	onSelectPokemon: (data: {}) => void;
+	onSelectPokemon: (data: TypePokemonInfo) => void;
 }
 
 const ListPokemon: FC<IListPokemon> = ({
@@ -24,26 +24,16 @@ const ListPokemon: FC<IListPokemon> = ({
 	console.log('pokemon pokemonDetail', pokemonDetail);
 
 	const renderCardPokemon = () => {
-		return pokemonDetail?.map(
-			(
-				item: {
-					id: number;
-					name: string;
-					types: [{ type: { slot?: string | undefined; name: string } }];
-					sprites: { other: { dream_world: { front_default: string } } };
-				},
-				index: number
-			) => {
-				return (
-					<Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-						<CardListPokemon
-							pokemonData={item}
-							onSelectPokemon={onSelectPokemon}
-						/>
-					</Grid>
-				);
-			}
-		);
+		return pokemonDetail?.map((item: TypePokemonInfo, index: number) => {
+			return (
+				<Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+					<CardListPokemon
+						pokemonData={item}
+						onSelectPokemon={onSelectPokemon}
+					/>
+				</Grid>
+			);
+		});
 	};
 
 	return (

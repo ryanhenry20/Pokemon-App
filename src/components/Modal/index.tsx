@@ -9,11 +9,12 @@ import {
 	Backdrop,
 	Box,
 } from '@mui/material';
+import { TypePokemonInfo } from 'types/pokemon';
 
 interface IModalProps {
 	isModalOpen: boolean;
 	handleModalClose: () => void;
-	pokemonInfo: {};
+	pokemonInfo: null | TypePokemonInfo;
 }
 
 type pokemonTypeStyleProps = {
@@ -91,14 +92,14 @@ const ModalComponent: FC<IModalProps> = ({
 
 	const renderPokemonType = () => {
 		return pokemonInfo?.types?.map((item, index) => {
-			colorString = item.type.name;
+			colorString = item?.type?.name;
 			return (
 				<>
 					<PokemonType
 						className="pokemon-type-item"
-						bg={colorType(item.type.name)}
+						bg={colorType(item?.type?.name)}
 						key={index}>
-						{item.type.name}
+						{item?.type?.name}
 					</PokemonType>
 				</>
 			);
