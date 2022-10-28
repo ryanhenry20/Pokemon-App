@@ -2,7 +2,11 @@ import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { Typography, Button, Grid } from '@mui/material';
 
-const HeroBanner: FC = ({ onClick }) => {
+interface IHeroBannerProps {
+	onClick: () => void;
+}
+
+const HeroBanner: FC<IHeroBannerProps> = ({ onClick }) => {
 	return (
 		<StyledHeroBanner>
 			<Grid container>
