@@ -7,6 +7,7 @@ import {
 	ModalComponent,
 } from 'components';
 import { PokemonContext } from 'context/pokemonContext';
+import { TypePokemonDetail } from 'types/pokemon';
 
 interface IListPokemon {
 	allPokemonDetail?: string[];
@@ -17,23 +18,32 @@ const ListPokemon: FC<IListPokemon> = ({
 	allPokemonDetail,
 	onSelectPokemon,
 }) => {
-	const { pokemon, loading, pokemonDetail, getPokemonPaggination } =
-		useContext(PokemonContext);
+	const { pokemonDetail } = useContext<any>(PokemonContext);
 
 	// console.log('pokemon Context', pokemon);
 	console.log('pokemon pokemonDetail', pokemonDetail);
 
 	const renderCardPokemon = () => {
-		return pokemonDetail?.map((item, index) => {
-			return (
-				<Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-					<CardListPokemon
-						pokemonData={item}
-						onSelectPokemon={onSelectPokemon}
-					/>
-				</Grid>
-			);
-		});
+		return pokemonDetail?.map(
+			(
+				item: {
+					id: number;
+					name: string;
+					types: [{ type: { slot?: string | undefined; name: string } }];
+					sprites: { other: { dream_world: { front_default: string } } };
+				},
+				index: number
+			) => {
+				return (
+					<Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+						<CardListPokemon
+							pokemonData={item}
+							onSelectPokemon={onSelectPokemon}
+						/>
+					</Grid>
+				);
+			}
+		);
 	};
 
 	return (

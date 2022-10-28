@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect, createContext } from 'react';
 import axios from 'axios';
+import { TypePokemonDetail } from 'types/pokemon';
 
 export const PokemonContext = createContext({});
 
@@ -16,11 +17,12 @@ export const PokemonProvider: FC<React.ReactNode> = ({ children }) => {
 			const resPokemonDetail = await Promise.all(
 				resPokemon.data.results.map(async (item: any) => {
 					const res = await axios.get(item.url);
+					setPokemonDetail(res.data);
 					return res.data;
 				})
 			);
 			console.log('resPokemonDetail', resPokemonDetail);
-			setPokemonDetail(resPokemonDetail);
+
 			setPokemon(resPokemon.data.results);
 			setLoading(false);
 		};
@@ -34,11 +36,12 @@ export const PokemonProvider: FC<React.ReactNode> = ({ children }) => {
 		const resPokemonDetail = await Promise.all(
 			resPokemon.data.results.map(async (item: any) => {
 				const res = await axios.get(item.url);
+				setPokemonDetail(res.data);
 				return res.data;
 			})
 		);
 		console.log('resPokemonDetail', resPokemonDetail);
-		setPokemonDetail(resPokemonDetail);
+
 		setPokemon(resPokemon.data.results);
 		setLoading(false);
 	};
