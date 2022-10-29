@@ -6,7 +6,7 @@ export const PokemonContext = createContext({});
 
 export const PokemonProvider: FC<React.ReactNode> = ({ children }) => {
 	const [pokemon, setPokemon] = useState([]);
-	const [pokemonDetail, setPokemonDetail] = useState([]);
+	const [pokemonDetail, setPokemonDetail] = useState<TypePokemonDetail[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -14,15 +14,15 @@ export const PokemonProvider: FC<React.ReactNode> = ({ children }) => {
 			const resPokemon = await axios.get(
 				`https://pokeapi.co/api/v2/pokemon?limit=${9}&offset=${0}`
 			);
-			const resPokemonDetail = await Promise.all(
+			const resPokemonDetail: TypePokemonDetail[] = await Promise.all(
 				resPokemon.data.results.map(async (item: any) => {
 					const res = await axios.get(item.url);
-					setPokemonDetail(res.data);
+
 					return res.data;
 				})
 			);
 			console.log('resPokemonDetail', resPokemonDetail);
-
+			setPokemonDetail(resPokemonDetail);
 			setPokemon(resPokemon.data.results);
 			setLoading(false);
 		};
@@ -36,12 +36,12 @@ export const PokemonProvider: FC<React.ReactNode> = ({ children }) => {
 		const resPokemonDetail = await Promise.all(
 			resPokemon.data.results.map(async (item: any) => {
 				const res = await axios.get(item.url);
-				setPokemonDetail(res.data);
+
 				return res.data;
 			})
 		);
 		console.log('resPokemonDetail', resPokemonDetail);
-
+		setPokemonDetail(resPokemonDetail);
 		setPokemon(resPokemon.data.results);
 		setLoading(false);
 	};
