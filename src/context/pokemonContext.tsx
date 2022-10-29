@@ -21,7 +21,7 @@ export const PokemonProvider: FC<React.ReactNode> = ({ children }) => {
 					return res.data;
 				})
 			);
-			console.log('resPokemonDetail', resPokemonDetail);
+
 			setPokemonDetail(resPokemonDetail);
 			setPokemon(resPokemon.data.results);
 			setLoading(false);
@@ -40,7 +40,7 @@ export const PokemonProvider: FC<React.ReactNode> = ({ children }) => {
 				return res.data;
 			})
 		);
-		console.log('resPokemonDetail', resPokemonDetail);
+
 		setPokemonDetail(resPokemonDetail);
 		setPokemon(resPokemon.data.results);
 		setLoading(false);

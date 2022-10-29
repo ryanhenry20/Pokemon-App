@@ -29,13 +29,11 @@ const PokemonLanding: FC<IPokemonLandingProps> = ({
 	};
 
 	const handleModalOpen = (data: TypePokemonInfo) => {
-		console.log('dataaaaaa', data);
 		setPokemonInfo(data);
 		setIsModalOpen(true);
 	};
 
 	const handleModalClose = () => {
-		console.log('close modal');
 		setIsModalOpen(false);
 	};
 	return (

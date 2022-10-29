@@ -20,9 +20,6 @@ const ListPokemon: FC<IListPokemon> = ({
 }) => {
 	const { pokemonDetail } = useContext<any>(PokemonContext);
 
-	// console.log('pokemon Context', pokemon);
-	console.log('pokemon pokemonDetail', pokemonDetail);
-
 	const renderCardPokemon = () => {
 		return pokemonDetail?.map((item: TypePokemonInfo, index: number) => {
 			return (

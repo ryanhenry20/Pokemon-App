@@ -95,10 +95,6 @@ const CardListPokemon: FC<ICardListPokemonProps> = ({
 		});
 	};
 
-	const onClickCard = () => {
-		console.log('pokemonData', pokemonData);
-	};
-
 	return (
 		<StyledCardListPokemon>
 			<Card

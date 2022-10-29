@@ -15,7 +15,6 @@ const PaginationComponent: React.FC = () => {
 					variant="outlined"
 					shape="rounded"
 					onChange={(event, page) => {
-						console.log('page', page, 'data', page * 9);
 						getPokemonPaggination(page);
 					}}
 					hidePrevButton

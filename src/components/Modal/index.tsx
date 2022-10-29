@@ -33,8 +33,6 @@ const ModalComponent: FC<IModalProps> = ({
 	const pokemonWeight = pokemonInfo?.weight;
 	const pokemonHeight = pokemonInfo?.height;
 
-	console.log('pokemonInfo', pokemonInfo);
-
 	const renderPokemonAbilites = () => {
 		return pokemonInfo?.abilities?.map((ability: any) => {
 			return (
